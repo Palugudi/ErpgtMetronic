@@ -1,0 +1,162 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\DummyRequest;
+use App\Models\Dummy;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
+
+class DummyController extends Controller
+{
+    public function index()
+    {
+        return view('pages.dummy.index');
+    }
+
+    public function listajax()
+    {
+        $dummies = Dummy::getAll();
+        return view('pages.dummy.listajax', compact('dummies'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(DummyRequest $request)
+    {
+        // Add dummy in the table
+        $dummy = Dummy::where('name', $request->Dummy)->first();
+        $delete = Dummy::where('name', $request->Dummy)->whereNotNull('deleted_at')->first();
+
+        if($dummy != null) {
+            if($delete) {
+                $dummy->deleted_at = null;
+                $dummy->save();
+            } else {
+                $this->validate($request, array(
+                    'Dummy' => 'required|max:255|unique:dummies,name'
+                ));
+            }
+        } else {
+        $dummy = new Dummy;
+        $dummy->name    = $request->Dummy;
+        $dummy->save();
+
+        if ($request->ajax())
+        {
+            if ($dummy){
+                return Response::json(['success' => 'true']);
+            }else {
+                return Response::json(['success' => 'false']);
+            }
+            
+        } else{
+            // Renseigner un message flash
+            Session::flash('success', trans('dummy.Success'));
+
+            // Rediriger vers une page
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $dummy = Dummy::find($id);
+
+        return response::json($dummy);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(DummyRequest $request, $id)
+    {
+        $dummy = Dummy::find($id);
+        $dummy->name      = $request->Dummy;
+        $dummy->save();
+        
+        if ($request->ajax())
+        {
+            if ($dummy){
+                return Response::json(['success' => 'true']);
+            }else {
+                return Response::json(['success' => 'false']);
+            }
+            
+        } else{
+            // Renseigner un message flash
+            Session::flash('success', trans('dummy.Modify'));
+
+            // Rediriger vers une page
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, $id)
+    {
+        // Mettre en soft-delete
+        $dummy = Dummy::find($id);
+        $dummy->deleted_at = Carbon::now();
+        $dummy->save();
+
+        if ($request->ajax())
+        {
+            if ($dummy){
+                return Response::json(['success' => 'true']);
+            }else {
+                return Response::json(['success' => 'false']);
+            }
+            
+        } else{
+            // Renseigner un message flash
+            Session::flash('success', trans('dummy.Delete'));
+
+            // Rediriger vers une page
+            return redirect()->back();
+        }
+    }
+}

@@ -1,0 +1,40 @@
+<?php
+
+return [
+
+    'enterprise'                          =>  'entreprise',
+    'Enterprise'                          =>  'Entreprise',
+    'Enterprise_add?'                     =>  'Voulez-vous ajouter une nouvelle entreprise ?',
+    'Enterprise_add_new'                  =>  'Ajouter une nouvelle entreprise',
+    'Enterprise_delete'                   =>  'Êtes-vous sûr de vouloir supprimer l\'entreprise?',
+    'Enterprise_deleted'                  =>  'L\'entreprise a bien été supprimé.',
+    'Enterprise_edit'                     =>  'Editer une entreprise',
+    'Enterprise_placeholder'              =>  'Veuillez indiquer le nom de l\'entreprise',
+    'enterprises'                        =>  'entreprises',
+    'Enterprises'                        =>  'Entreprises',
+    'Enterprises_list'                   =>  'Liste des entreprises',
+
+    'Success'						 =>	 'L\'entreprise a été crée avec succès!',
+    'Modify'						 =>	 'L\'entreprise a été modifié avec succès!',
+    'Delete'						 =>	 'L\'entreprise a été supprimé avec succès!',
+
+    'Company'                        =>  'Société',
+    'Company_placeholder'            =>  'Veuillez indiquer le nom de la société',
+    'Contact'                        =>  'Contact',
+    'Contact_first_name'             =>  'Prénom du contact',
+    'Contact_first_name_placeholder' =>  'Veuillez indiquer le prénom du contact',
+    'Contact_last_name'              =>  'Nom du contact',
+    'Contact_last_name_placeholder'  =>  'Veuillez indiquer le nom du contact',
+    'Contact_email'                  =>  'Email du contact',
+    'Contact_email_placeholder'      =>  'Veuillez indiquer l\'email du contact',
+    'Contact_number'                 =>  'Numéro de téléphone',
+    'Contact_number_placeholder'     =>  'Veuillez indiquer le numéro de téléphone',
+    'Address'                        =>  'Adresse',
+    'Address_placeholder'            =>  'Veuillez indiquer l\'adresse',
+    'Postal_code'                    =>  'Code postal',
+    'Postal_code_placeholder'        =>  'Veuillez indiquer le code postal',
+    'City'                           =>  'Ville',
+    'City_placeholder'               =>  'Veuillez indiquer la ville',
+    'Activity_domain'                =>  'Domaine d\'activité',
+    'Activity_domain_placeholder'    =>  'Veuillez indiquer le domaine d\'activité',
+];

@@ -1,0 +1,288 @@
+.blue-color {
+  color: #00bef2;
+}
+
+.SmallPicture {
+  height: 150px;
+  width: 150px;
+  margin-left: 15px;
+  border-radius: 10px;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  margin-left: 10px;
+  padding: 0;
+}
+
+.col{
+  float:top;
+  margin: 5px 5px 5px 24px;
+}
+
+.drag{
+	cursor: move;
+  width:32px;
+  height:32px;
+  float: left;
+}
+
+#dropzone {
+	background-repeat: no-repeat;
+	background-size: contain;
+  width: 1000px;
+  height: 550px;
+  position: relative; 
+  border: 2px dashed grey;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  text-align: center;
+}
+/* .dataTables_wrapper .dataTables_length {
+float: right;
+}
+.dataTables_wrapper .dataTables_filter {
+  float: left;
+  text-align: left;
+} */
+
+#toolbar {
+  background: rgba(255, 255, 255, 1);
+  opacity: .6;
+  width: 250px;
+  height: 550px;
+  position: absolute;
+  left: -250px;
+  z-index: 1;
+  transition: .5s left;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#toolbar.open {
+  left: 0;
+  opacity: .95;
+}
+
+#toolbar .hamburger {
+  height: 100px;
+  width: 25px;
+  background: #000;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, .3);
+  position: absolute;
+  right: -25px;
+  top: 40%;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+.hamburger span {
+  color: #fff;
+  display: inline-block;
+  position: relative;
+  transform: rotate(90deg);
+  top: 39px;
+  left: -30px;
+}
+
+.hamburgerSite span {
+  left: -35px;
+}
+
+.txtEquip {
+  padding: 7px 0 0 40px;
+  font-weight: bold;
+}
+
+#toolbarlist {
+  /*overflow-y: scroll;*/
+  max-height: 100vh;
+}
+
+#toolbarlist h2{
+  text-align: center;
+}
+
+#toolbarlist button{
+  padding: 5px 5px 5px 10px;
+}
+
+#toolbar ul {
+  margin: 0;
+  padding: 0;
+}
+
+#toolbar li {
+  height:40px;
+  list-style-type: none;
+  border-bottom: 1px solid #ccc;
+}
+
+#toolbar li:hover {
+  color: #666;
+}
+
+.SmallMap {
+  height: 140px;
+  width: 220px;
+  border: 2px dashed grey;
+  margin-left: 15px;
+}
+
+.col-center {
+  margin-top: 100px;
+  margin-bottom: auto;
+}
+
+.btnSite {
+  background-color: transparent;
+}
+
+.btnSite img{
+  display: block;
+  margin : 0 auto 5px auto;
+  height: 75px;
+  width: 75px;
+}
+
+.btnSite p{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.btnSite:hover p{
+  font-weight: bold;
+}
+
+.flag{
+  min-width: 100%;
+  width:100%;
+}
+
+.flag img{
+  margin-left: -8px;
+}
+
+/* -------------------------------- 
+      Slide
+-------------------------------- */
+.button-container {
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+  
+.button {
+    width: 200px;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.button-slide-vertical {
+  overflow: hidden;
+    height: 10vh;
+}  
+  
+ .button-slide-vertical  i {
+    position: relative;
+    top: 10px;
+    transition: all .3s ease-in-out;
+    opacity: 1;
+  }
+
+.button-slide-vertical img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  height: 50px;
+  width: 50px;
+}
+  
+.button-slide-vertical   i.front {
+    font-size: 15px;
+    text-align: center;
+  }  
+.button-slide-vertical   i.back {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  
+.button-slide-vertical  :hover i.front {
+    transform: translateY(-30px);
+    opacity: 0;     
+  }
+  
+.button-slide-vertical :hover i.back {
+    transform: translateY(-50px);
+    opacity: 1;     
+  }
+
+
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+.dataTables_paginate {
+  text-align: center !important;
+}
+
+.comment-name {
+  float: left;
+  margin-left: 15px;
+}
+
+.comment-name>h3 {
+    margin: 5px 0px;
+  }
+
+.comment-time {
+  font-size: 11px;
+  font-style: italic;
+  color: #aaa;
+}
+.comment-content {
+  clear: both;
+  margin-left: 65px;
+  font-size: 16px;
+  line-height: 1.3em;
+}
+
+input[type="radio"]{
+  margin-left: 5%;
+  margin-right: 0%;
+}
+
+.qrcodelabel{
+  margin-top: 4%;
+}
+
+.qrcodeimage{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.container hr {
+  border-top: 0px;
+}
+
+.nav-tabs.nav-justified>.active>a, 
+.nav-tabs.nav-justified>.active>a:focus, 
+.nav-tabs.nav-justified>.active>a:hover{
+background-color: #1a5fce;
+color: #fff;
+}

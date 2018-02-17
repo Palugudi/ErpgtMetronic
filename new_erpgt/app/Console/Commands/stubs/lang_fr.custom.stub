@@ -1,0 +1,21 @@
+<?php
+
+return [
+
+    'dummy'                          =>  'dummy',
+    'Dummy'                          =>  'Dummy',
+    'Dummy_add?'                     =>  'Voulez-vous ajouter un nouveau dummy ?',
+    'Dummy_add_new'                  =>  'Ajouter un nouveau dummy',
+    'Dummy_delete'                   =>  'Êtes-vous sûr de vouloir supprimer le dummy?',
+    'Dummy_deleted'                  =>  'Le dummy a bien été supprimé.',
+    'Dummy_edit'                     =>  'Editer un dummy',
+    'Dummy_placeholder'              =>  'Veuillez indiquer le nom du dummy',
+    'dummies'                        =>  'dummies',
+    'Dummies'                        =>  'Dummies',
+    'Dummies_list'                   =>  'Liste des dummies',
+
+    'Success'						 =>	 'Le dummy a été crée avec succès!',
+    'Modify'						 =>	 'Le dummy a été modifié avec succès!',
+    'Delete'						 =>	 'Le dummy a été supprimé avec succès!',
+
+];

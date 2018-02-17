@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Dummy extends Model
+{
+    public static function getList()
+    {
+    	$dummies = Dummy::getAll();
+
+        $result = array();
+        foreach($dummies as $dummy) {
+            $result[$dummy->id] = $dummy->name;
+        }
+        return $result;
+    }
+
+    public static function getAll()
+    {
+    	return Dummy::where('deleted_at', null)->orderBy('name')->get();
+    }
+}

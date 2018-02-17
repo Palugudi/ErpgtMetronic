@@ -1,0 +1,21 @@
+<?php
+
+return [
+
+    'dummy'                          =>  'dummy',
+    'Dummy'                          =>  'Dummy',
+    'Dummy_add?'                     =>  'Would you like to add a new dummy ?',
+    'Dummy_add_new'                  =>  'Add new dummy',
+    'Dummy_delete'                   =>  'Are you sure to delete the dummy?',
+    'Dummy_deleted'                  =>  'The dummy has been deleted with success.',
+    'Dummy_edit'                     =>  'Edit a dummy',
+    'Dummy_placeholder'              =>  'Please indicate the name of the dummy',
+    'dummies'                        =>  'dummies',
+    'Dummies'                        =>  'Dummies',
+    'Dummies_list'                   =>  'Dummies list',
+
+    'Success'						 =>	 'The dummy was created with success!',
+    'Modify'						 =>	 'The dummy was modified with success!',
+    'Delete'						 =>	 'The dummy was deleted with success!',
+
+];

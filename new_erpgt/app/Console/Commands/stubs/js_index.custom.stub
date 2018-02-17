@@ -1,0 +1,139 @@
+// Afficher la liste
+$(document).ready(function(){
+	DummyList();
+});
+
+// Fonction pour afficher la liste
+var DummyList = function()
+{
+	$.ajax({
+		type:'get',
+		url: routeDummyAjax,
+		success: function(data){
+			$('#dummyList').empty().html(data);
+			DataTable('#DummyTable');
+		}
+	});
+}
+
+var DeleteDummy = function(id)
+{
+	swal({
+	  title: DummyDeleteText,
+	  text: noReturnBackText,
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  cancelButtonText: cancelText,
+	  confirmButtonText: yesDeleteText
+	}).then(function () {
+		$.ajax({
+			url: routeDummy+"/"+id,
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'DELETE',
+			data: id,
+			success:function(data){
+				if (data.success == 'true') 
+				{
+					swal(
+					    deletedText,
+					    DummyDeletedText,
+					    'success'
+					);
+					DummyList();
+				}
+			}
+		});
+	});
+};
+
+var NewDummy = function()
+{	
+	ResetFields();
+
+	$('#myDummyModalLabel').text(DummyAddText);
+	$('#saveDummy').text(validate_btn);
+	$('#dummy_id').val("");
+	$('#Dummy').val("");
+	$('#Dummy').focus();
+	$('#DummyModal').modal('show');
+};
+
+var EditDummy = function(id)
+{	
+	ResetFields();
+
+	$.get(routeDummy+"/"+id+"/edit", function(data){
+		$('#myDummyModalLabel').text(DummyEditText);
+		$('#saveDummy').text(validmodif_btn);
+		$('#dummy_id').val(data.id);
+		$('#Dummy').val(data.name);
+		$('#Dummy').focus();
+		$('#DummyModal').modal('show');
+	});
+};
+
+// Fonction pour faire un update ou une création
+$("#saveDummy").click(function(e)
+{
+	//var form = $('#frmDummy')[0]; // Code lors d'un envoi de fichier
+	//var formData = new FormData(form);
+	var form = $('#frmDummy');
+	var formData = form.serialize();
+	var id = $("#dummy_id").val();
+	var Saveroute = routeDummy;
+	var state = $('#saveDummy').text();
+	var type = 'POST'
+
+	e.preventDefault();
+	$('input+small').text('');
+    $('input').parent().removeClass('has-error');
+	
+	if (state!=validate_btn){
+		Saveroute = routeDummy+"/"+id;
+	}
+
+	$.ajax({
+		url: Saveroute,
+		headers: {'X-CSRF-TOKEN': token},
+		type: type,
+		data : formData,
+		//contentType: false, // Code lors de l'envoi d'un fichier
+    	//processData: false,
+		success: function(data){
+			if (data.success == 'true')
+			{
+				DummyList();
+				$("#DummyModal").modal('toggle');
+				$('#frmDummy').trigger('reset');
+				$('#dummy').focus();
+
+				if (state==validmodif_btn){
+					$("#message-update").fadeIn();
+					$('#message-update').show().delay(3000).fadeOut(1);
+				}else {
+					$("#message-new").fadeIn();
+					$('#message-new').show().delay(3000).fadeOut(1);
+				}
+			}
+		},
+		error:function(data)
+		{
+			// Permet d'afficher les messages d'erreur sous les champs
+			$.each(data.responseJSON, function (key, value) {
+                var input = '#frmDummy input[name=' + key + ']';
+                $(input + '+small').text(value);
+                $(input).parent().addClass('has-error');
+
+                var textarea = '#frmDummy textarea[name=' + key + ']';
+                $(textarea + '+small').text(value);
+                $(textarea).parent().addClass('has-error');
+
+                var select = '#frmDummy select[name=' + key + ']';
+                $(select + '+small').text(value);
+                $(select).parent().addClass('has-error');
+            });
+		}
+	});
+})
