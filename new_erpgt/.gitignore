@@ -6,7 +6,7 @@
 Homestead.json
 Homestead.yaml
 .env
-
+.DS_Store
 public/documents/1/documents/
 
 public/documents/1/equipments/2/documents/
