@@ -54,3 +54,7 @@ public/documents/1/keys/2/qr_code\.svg
 public/documents/1/keys/3/qr_code\.svg
 
 public/documents/1/reports/1/pictures/784946\.jpg
+
+bootstrap/*
+.env.example
+/*/.DS_Store
