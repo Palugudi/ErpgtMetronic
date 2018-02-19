@@ -5,7 +5,6 @@
 @section('title', trans('consumption.Consumptions_list'))
 
 @section('stylesheets')
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
 @endsection
 
@@ -13,72 +12,65 @@
    <!-- Begin: Subheader -->
     <div class="m-subheader ">
         <div class="d-flex align-items-center">
-            <div class="mr-auto">
-                <h3 class="m-subheader__title ">
-                    {{trans('consumption.Consumption_add_new')}} 
-                </h3>
-            </div>
+                <div class="row container-fluid">
+                    <div class="col-md-6">
+                        <h2><a href="{{ Route('site.show', $site->id) }}">{{ $site->name}}</a> / {{trans('consumption.Consumptions_list')}}</h2>
+                    </div>
+
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-lg btn-block btn-info" href="#" OnClick='NewConsumption();' data-toggle="modal">
+                            {{trans('consumption.Consumption_add_new')}} 
+                        </button>
+                    </div>
+                </div>
         </div>
     </div>
     <!-- END: Subheader -->
 
     <section id="section-1" class="parallax">
-        <div class="row">
-            <div class="col-md-8">
-                <h1><a href="{{ Route('site.show', $site->id) }}">{{ $site->name}}</a> / {{trans('consumption.Consumptions_list')}}</h1>
-            </div>
-
-            <div class="col-md-4">
-                <button type="button" class="btn btn-lg btn-block btn-info" href="#" OnClick='NewConsumption();' data-toggle="modal">
-                    {{trans('consumption.Consumption_add_new')}} 
-                </button>
-            </div>
-
             <div class="col-md-12">
                 <hr>
-                <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a data-toggle="tab" href="#eau"><i class="fa fa-tint"></i> <strong>Eau</strong></a></li>
-                    <li><a data-toggle="tab" href="#elecHP"><i class="fa fa-bolt"></i> <strong>Electricité HP</strong></a></li>
-                    <li><a data-toggle="tab" href="#elecHC"><i class="fa fa-bolt"></i> <strong>Electricité HC</strong></a></li>
-                    <li><a data-toggle="tab" href="#gaz"><i class="fa fa-fire"></i> <strong>Gaz</strong></a></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div id="eau" class="tab-pane fade in active">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="waterGraph"></div>
-                                <div id="waterList"></div>
-                            </div>
-                        </div>
+                <nav>
+                    <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" data-toggle="tab" href="#nav-eau-tab" role="tab" aria-controls="nav-eau-tab" aria-selected="true"> <strong><i class="fa fa-tint"></i>Eau</strong></a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-elecHP-tab" role="tab" aria-controls="nav-elecHP-tab" aria-selected="false"><strong><i class="fa fa-bolt"></i>Electricité HP</strong></a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-elecHC-tab" role="tab" aria-controls="nav-elecHC-tab" aria-selected="false"><strong><i class="fa fa-bolt"></i>Electricité HC</strong></a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-gaz-tab" role="tab" aria-controls="nav-gaz-tab" aria-selected="false"><strong><i class="fa fa-fire"></i>Gaz</strong></a>
                     </div>
-                    <div id="elecHP" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="elecHPGraph"></div>
-                                <div id="elecHPList"></div>
-                            </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-eau-tab" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div id="waterGraph"></div>
+                        <div class="m-widget4__chart m--margin-top-10 m--margin-top-20" style="height:300px;">
+                            <canvas id="m_watergraph"></canvas>
                         </div>
+                        <div id="waterList"></div>
                     </div>
-                    <div id="elecHC" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="elecHCGraph"></div>
-                                <div id="elecHCList"></div>
-                            </div>
+                    <div class="tab-pane fade" id="nav-elecHP-tab" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div id="elecHPGraph"></div>
+                        
+                        <div class="m-widget4__chart m--margin-top-10 m--margin-top-20" style="height:300px;">
+                            <canvas id="m_elechpgraph"></canvas>
                         </div>
+                        <div id="elecHPList"></div>
                     </div>
-                    <div id="gaz" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="gasGraph"></div>
-                                <div id="gasList"></div>
-                            </div>
+                    <div class="tab-pane fade" id="nav-elecHC-tab" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div id="elecHCGraph"></div>
+                        <div class="m-widget4__chart m--margin-top-10 m--margin-top-20" style="height:300px;">
+                            <canvas id="m_elechcgraph"></canvas>
                         </div>
+                        <div id="elecHCList"></div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-gaz-tab" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div id="gasGraph"></div>
+                        <div class="m-widget4__chart m--margin-top-10 m--margin-top-20" style="height:300px;">
+                            <canvas id="m_gasgraph"></canvas>
+                        </div>
+                        <div id="gasList"></div>
                     </div>
                 </div>
             </div>
-        </div><!-- end of header .row -->
+            <br /> <br />
     </section>
     @include('pages.consumption.modal')
 @endsection

@@ -1,5 +1,5 @@
 // Afficher la liste
-$(document).ready(function(){
+$(document).ready(function(){  
 	ConsumptionList();
 	
     $('#Consumption_date').datetimepicker({
@@ -16,7 +16,8 @@ var ConsumptionList = function()
 		url: routeConsumptionWaterAjax,
 		success: function(data){
 			$('#waterList').empty().html(data);
-			DataTable('#WaterTable');
+			// DataTable('#WaterTable');
+			DataTableM.init('#WaterTable');
 		}
 	});
 
@@ -25,7 +26,8 @@ var ConsumptionList = function()
 		url: routeConsumptionGasAjax,
 		success: function(data){
 			$('#gasList').empty().html(data);
-			DataTable('#GasTable');
+			// DataTable('#GasTable');
+			DataTableM.init('#GasTable');
 		}
 	});
 
@@ -34,7 +36,8 @@ var ConsumptionList = function()
 		url: routeConsumptionElecHpAjax,
 		success: function(data){
 			$('#elecHPList').empty().html(data);
-			DataTable('#ElecHPTable');
+			// DataTable('#ElecHPTable');
+			DataTableM.init('#ElecHPTable');
 		}
 	});
 
@@ -43,7 +46,8 @@ var ConsumptionList = function()
 		url: routeConsumptionElecHcAjax,
 		success: function(data){
 			$('#elecHCList').empty().html(data);
-			DataTable('#ElecHCTable');
+			// DataTable('#ElecHCTable');
+			DataTableM.init('#ElecHCTable');
 		}
 	});
 
@@ -209,3 +213,28 @@ $("#saveConsumption").click(function(e)
 	});
 })
 
+var DataTableM = function() {
+	//== Private functions
+  
+	// demo initializer
+	var demo = function(class_name) {
+  
+	  var datatable = $(class_name).mDatatable({
+		data: {
+		  saveState: {cookie: false},
+		},
+		search: {
+		  input: $('#generalSearch'),
+		},
+	  });
+	};
+  
+	return {
+	  //== Public functions
+	  init: function(class_name) {
+		// init dmeo
+		demo(class_name);
+	  },
+	};
+  }();
+////////

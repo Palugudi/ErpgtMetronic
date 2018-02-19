@@ -1,8 +1,8 @@
 <div class="table-responsive">
-    <table class="table" id="ElecHPTable">
+    <table class="table" id="ElecHPTable" width="100%">
         <thead>
             <tr>
-                <th></th>
+                <th>Actions</th>
                 <th>{{trans('consumption.Consumption_date')}}</th>
                 <th>{{trans('consumption.IndexHP')}}</th>
                 <th>{{trans('consumption.Conso')}}</th>
@@ -14,8 +14,15 @@
             @foreach ($elecshp as $elec)
                 <tr id="elec{{ $elec->id }}">
                     <td>
-                        <a href="" OnClick='EditConsumption({{ $elec->id }});' data-toggle="modal"><span class="glyphicon glyphicon-pencil text-warning"></span></a>
-                        <a href="" OnClick="DeleteConsumption({{ $elec->id }})" data-toggle="modal"><span class="glyphicon glyphicon-remove text-danger"></span></a>
+                        <a class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details"
+			                    href="" OnClick='EditConsumption({{ $elec->id }});' data-toggle="modal">
+				               <i class="la la-edit"></i>
+			            </a>
+			            
+                         <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete"
+			                    OnClick="DeleteConsumption({{ $elec->id }})" data-toggle="modal" >
+				              <i class="la la-trash"></i>
+			            </a>
                     </td>
                     <td>{{ format_date_simple($elec->date) }}</td>
                     <td>{{ $elec->statement}} kWh</td>
